@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
           integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
           crossorigin="anonymous"
@@ -50,19 +50,23 @@
   <div id="search-view" class="view hidden">
     <div class="search-container">
       <img id="search-logo" src="" alt="" class="search-logo" />
+      <p id="search-org-name" class="search-org-name"></p>
       <h1 id="search-headline" class="search-headline"></h1>
       <p id="search-subtext" class="search-subtext"></p>
       <div class="search-form" role="search">
         <label for="lookup-input" class="search-label" id="search-label">Email address</label>
-        <input
-          type="email"
-          id="lookup-input"
-          class="search-input"
-          placeholder=""
-          autocomplete="email"
-          inputmode="email"
-          aria-label="Enter your registered email address"
-        />
+        <div class="search-input-wrap">
+          <svg class="search-input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <input
+            type="email"
+            id="lookup-input"
+            class="search-input"
+            placeholder=""
+            autocomplete="email"
+            inputmode="email"
+            aria-label="Enter your registered email address"
+          />
+        </div>
         <button id="lookup-btn" class="search-btn" type="button"></button>
       </div>
       <p id="search-footer-note" class="search-footer-note"></p>
@@ -71,17 +75,11 @@
 
   <!-- CERTIFICATE: filled by renderCertificateView() -->
   <div id="certificate-view" class="view hidden">
-    <!-- Action bar: Download PDF + Print buttons (hidden in print/PDF) -->
-    <div class="action-bar no-print" id="action-bar" role="toolbar" aria-label="Certificate actions">
-      <button id="download-btn" class="btn btn-primary" type="button" aria-label="Download certificate as PDF">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF
-      </button>
-      <button id="print-btn" class="btn btn-secondary" type="button" onclick="window.print()" aria-label="Print certificate">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        Print
-      </button>
-    </div>
+    <!-- Floating download button (hidden in print/PDF) -->
+    <button id="download-btn" class="btn-download no-print" type="button" aria-label="Download certificate as PDF">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download PDF
+    </button>
     <div class="certificate-wrapper">
       <div class="certificate" id="certificate"
            itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
@@ -94,6 +92,7 @@
         <div class="cert-header">
           <img id="cert-logo" src="" alt="" class="cert-logo" />
           <p class="cert-org-name" id="cert-org-name"></p>
+          <p class="cert-event-title" id="cert-event-title"></p>
         </div>
 
         <div class="cert-title-block">
@@ -138,12 +137,38 @@
     </div>
   </div>
 
-  <!-- ERROR: static message — hardcoded because branding config may be the thing that failed -->
+  <!-- ERROR / NOT FOUND — hardcoded because branding config may be the thing that failed -->
   <div id="error-view" class="view hidden" role="alert">
     <div class="error-container">
-      <span class="error-icon" aria-hidden="true">⚠</span>
+      <div class="error-illustration" aria-hidden="true">
+        <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tilted certificate -->
+          <g transform="rotate(-8, 90, 65)">
+            <rect x="20" y="12" width="132" height="96" rx="5" fill="#f8f5ef" stroke="#c8a951" stroke-width="2.5"/>
+            <rect x="28" y="20" width="116" height="80" rx="3" fill="none" stroke="#c8a951" stroke-width="1.2" opacity="0.5"/>
+            <rect x="44" y="34" width="76" height="5" rx="2.5" fill="#1a2e4a" opacity="0.12"/>
+            <rect x="52" y="46" width="60" height="4" rx="2" fill="#1a2e4a" opacity="0.09"/>
+            <rect x="48" y="56" width="68" height="4" rx="2" fill="#1a2e4a" opacity="0.07"/>
+            <text x="86" y="90" text-anchor="middle" font-size="42" font-family="Georgia, serif" fill="#1a2e4a" opacity="0.18">?</text>
+          </g>
+          <!-- Magnifying glass -->
+          <circle cx="136" cy="120" r="25" fill="none" stroke="#1a2e4a" stroke-width="3.5"/>
+          <circle cx="136" cy="120" r="17" fill="rgba(200,169,81,0.1)"/>
+          <line x1="154" y1="138" x2="172" y2="156" stroke="#1a2e4a" stroke-width="4" stroke-linecap="round"/>
+          <!-- Trailing search dots -->
+          <circle cx="28" cy="130" r="3" fill="#c8a951" opacity="0.45"/>
+          <circle cx="52" cy="140" r="2.5" fill="#c8a951" opacity="0.35"/>
+          <circle cx="76" cy="134" r="2" fill="#c8a951" opacity="0.28"/>
+          <circle cx="98" cy="126" r="2" fill="#c8a951" opacity="0.2"/>
+        </svg>
+      </div>
       <p class="error-message" id="error-message">Could not load configuration. Please try again.</p>
+      <p class="error-tagline">We checked everywhere. Even under the desk.</p>
       <p class="error-detail hidden" id="error-detail"></p>
+      <button class="error-retry-btn" id="retry-btn" type="button" aria-label="Try again">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+        Try Again
+      </button>
     </div>
   </div>
 
