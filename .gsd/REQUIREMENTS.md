@@ -116,16 +116,58 @@
 | Database or CMS | Static JSON files are the database |
 | Payment or access control | All certificates are free and public |
 
+
 ---
 
 ## Traceability
 
-| Phase | Requirements Covered |
-|---|---|
-| Phase 1 | APP-01–05, CFG-01–04, DATA-01–04 |
-| Phase 2 | CERT-01–07 |
-| Phase 3 | QR-01–06, PDF-01–06, SEARCH-01–05 |
-| Phase 4 | SEO-01–04, AEO-01–04 |
-| Phase 5 | CONTRIB-01–03, SEC (print CSS, error handling, security model) |
-
-_Traceability will be refined when ROADMAP.md is finalized._
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| APP-01 | Phase 04: Search & SPA Routing | Pending |
+| APP-02 | Phase 02: Certificate Rendering | Pending |
+| APP-03 | Phase 01: Scaffold & Config System | Pending |
+| APP-04 | Phase 01: Scaffold & Config System | Pending |
+| APP-05 | Phase 02: Certificate Rendering | Pending |
+| CFG-01 | Phase 01: Scaffold & Config System | Pending |
+| CFG-02 | Phase 01: Scaffold & Config System | Pending |
+| CFG-03 | Phase 01: Scaffold & Config System | Pending |
+| CFG-04 | Phase 01: Scaffold & Config System | Pending |
+| DATA-01 | Phase 01: Scaffold & Config System | Pending |
+| DATA-02 | Phase 01: Scaffold & Config System | Pending |
+| DATA-03 | Phase 02: Certificate Rendering | Pending |
+| DATA-04 | Phase 02: Certificate Rendering | Pending |
+| CERT-01 | Phase 02: Certificate Rendering | Pending |
+| CERT-02 | Phase 02: Certificate Rendering | Pending |
+| CERT-03 | Phase 02: Certificate Rendering | Pending |
+| CERT-04 | Phase 02: Certificate Rendering | Pending |
+| CERT-05 | Phase 02: Certificate Rendering | Pending |
+| CERT-06 | Phase 02: Certificate Rendering | Pending |
+| CERT-07 | Phase 02: Certificate Rendering | Pending |
+| QR-01 | Phase 03: Interactive Features | Pending |
+| QR-02 | Phase 03: Interactive Features | Pending |
+| QR-03 | Phase 03: Interactive Features | Pending |
+| QR-04 | Phase 03: Interactive Features | Pending |
+| QR-05 | Phase 03: Interactive Features | Pending |
+| QR-06 | Phase 03: Interactive Features | Pending |
+| PDF-01 | Phase 03: Interactive Features | Pending |
+| PDF-02 | Phase 03: Interactive Features | Pending |
+| PDF-03 | Phase 03: Interactive Features | Pending |
+| PDF-04 | Phase 03: Interactive Features | Pending |
+| PDF-05 | Phase 03: Interactive Features | Pending |
+| PDF-06 | Phase 03: Interactive Features | Pending |
+| SEARCH-01 | Phase 04: Search & SPA Routing | Pending |
+| SEARCH-02 | Phase 04: Search & SPA Routing | Pending |
+| SEARCH-03 | Phase 04: Search & SPA Routing | Pending |
+| SEARCH-04 | Phase 04: Search & SPA Routing | Pending |
+| SEARCH-05 | Phase 04: Search & SPA Routing | Pending |
+| SEO-01 | Phase 05: SEO & Structured Data | Pending |
+| SEO-02 | Phase 05: SEO & Structured Data | Pending |
+| SEO-03 | Phase 05: SEO & Structured Data | Pending |
+| SEO-04 | Phase 05: SEO & Structured Data | Pending |
+| AEO-01 | Phase 05: SEO & Structured Data | Pending |
+| AEO-02 | Phase 05: SEO & Structured Data | Pending |
+| AEO-03 | Phase 05: SEO & Structured Data | Pending |
+| AEO-04 | Phase 05: SEO & Structured Data | Pending |
+| CONTRIB-01 | Phase 01: Scaffold & Config System | Pending |
+| CONTRIB-02 | Phase 06: Contribution & Polish | Pending |
+| CONTRIB-03 | Phase 06: Contribution & Polish | Pending |
