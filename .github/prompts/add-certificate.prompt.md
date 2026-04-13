@@ -71,4 +71,4 @@ Use that exact value for:
 ## Context references
 
 - `README.md`
-- `data/sample.json`
+- `data/jane-doe-at-example-com.json`

@@ -60,4 +60,4 @@ Example:
 ## Source of truth
 
 - `README.md` attendee rules
-- `data/sample.json` template example
+- `data/jane-doe-at-example-com.json` template example
